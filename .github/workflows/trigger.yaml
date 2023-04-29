@@ -22,6 +22,9 @@ jobs:
   
   - name: checkout source
     uses: actions/checkout@v3
+    with: 
+      repository: dov_bear_test/dov-bear/
+      path: dov-bear
 
   - name: install go 
     run: go get
@@ -39,8 +42,8 @@ jobs:
   - name: buid go
     run: go build -o out
 
-  - name: install railway
-    run: npm i -g @railway/cli
+  # - name: install railway
+  #   run: npm i -g @railway/cli
 
   - name: deploy
     run: railway up
