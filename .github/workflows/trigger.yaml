@@ -23,8 +23,9 @@ jobs:
   - name: checkout source
     uses: actions/checkout@v3
 
-  - name: install go dependency
-    run: actions/go-dependency-submission@v1
+  - name: install go 
+    run: go get
+    #run: actions/go-dependency-submission@v1
     #with:
     # GitHub Personal Access Token (PAT). Defaults to PAT provided by Action runner
     #token: # optional, default is ${{ github.token }}
@@ -34,6 +35,9 @@ jobs:
     # Build target to detect build dependencies. If unspecified, will use "all", with will detect all dependencies used in all build targets (including tests and tools).
     #3go-build-target: all
     # default is all
+
+  - name: buid go
+    run: go build -o out
 
   - name: install railway
     run: npm i -g @railway/cli
