@@ -1,14 +1,14 @@
 name: build go app 
 on: 
   push:
-    branches:
-    - 'release/v<digit>.<digit>'
-    - '!release/v*-'
-    - '!release/beta'
-    - '!v*'
-    - '!<branch>-*'
-    paths-ignore:
-    - '.gitignore'
+    # branches:
+    # - 'release/v<digit>.<digit>'
+    # - '!release/v*-'
+    # - '!release/beta'
+    # - '!v*'
+    # - '!<branch>-*'
+    # paths-ignore:
+    # - '.gitignore'
 jobs:
   test_rigger:
     runs-on: ubuntu-latest
