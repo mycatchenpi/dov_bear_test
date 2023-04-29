@@ -25,14 +25,14 @@ jobs:
 
   - name: install go dependency
     run: actions/go-dependency-submission@v1
-    with:
+    #with:
     # GitHub Personal Access Token (PAT). Defaults to PAT provided by Action runner
     #token: # optional, default is ${{ github.token }}
     # User provided map of max key/value pairs of metadata to include with the snapshot e.g. {"lastModified": "12-31-2022"}
-    go-mod-path: dov_bear_test/dov-bear/go.mod
+    #go-mod-path: dov_bear_test/dov-bear/go.mod
     # default is go.mod
     # Build target to detect build dependencies. If unspecified, will use "all", with will detect all dependencies used in all build targets (including tests and tools).
-    go-build-target: all
+    #3go-build-target: all
     # default is all
 
   - name: install railway
