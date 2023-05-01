@@ -76,7 +76,7 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Repository:* ${{ secrets.REPO_URL }}"
+                      "text": "*Repository:* <${{ secrets.REPO_URL }}|${{ secrets.REPO_URL }}>"
                     }
                   ]
                 },
@@ -84,7 +84,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{ secrets.RAILWAY_DEPLOY_URL }}"
+                    "text": "<${{ secrets.RAILWAY_DEPLOY_URL }}|${{ secrets.RAILWAY_DEPLOY_URL }}>"
                   },
                   "accessory": {
                     "type": "button",
