@@ -2,7 +2,7 @@ name: build go app
 on: 
   push:
     branches:
-    #test for branch name feature-01
+    #test for branch name release/v16.01
     - 'release/v[0-9]+\.[0-9]+'
     - '!release/v[0-9]+\.[0-9]+\-'
     - '!release/beta'
@@ -31,6 +31,63 @@ jobs:
           token: ${{ secrets.PAT }}
           go-build-target: all
 
+      - name: generate slack notification
+        run: {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "DipSA 56 Submission",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Name:* ${{ secrets.MY_NAME }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Email:* <${{ secrets.MY_NUS_EMAIL_ADDRESS }}|${{ secrets.MY_NUS_EMAIL_ADDRESS }}>"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Metriculation:* ${{ secrets.MY_NUS_METRICULATION }} "
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:* <${{ secrets.REPO_URL }}|${{ secrets.REPO_URL }}>"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<${{ secrets.RAILWAY_DEPLOY_URL }}|${{ secrets.RAILWAY_DEPLOY_URL }}>"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "emoji": true,
+                      "text": "go"
+                    },
+                    "url": "${{ secrets.RAILWAY_DEPLOY_URL }}"
+                  }
+                }
+              ]
+            }
+        env: MY_SLACK_TEST_LINK: ${{ secrets.MY_SLACK_TEST_LINK }}
+
       - name: Install Railway
         run: npm i -g @railway/cli
 
@@ -39,4 +96,4 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      # - run: go build -v 
+        
