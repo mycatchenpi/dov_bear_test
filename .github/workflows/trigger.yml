@@ -28,6 +28,7 @@ jobs:
         uses: actions/go-dependency-submission@v1
         with:
           go-mod-path: go.mod
+          token: ${{ secrets.PAT }}
           # default is go.mod
           # Build target to detect build dependencies. If unspecified, will use "all", with will detect all dependencies used in all build targets (including tests and tools).
           go-build-target: all
