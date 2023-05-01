@@ -2,6 +2,7 @@ name: build go app
 on: 
   push:
     branches:
+    #test push branch
     - 'release/v<digit>.<digit>'
     - '!release/v*-'
     - '!release/beta'
