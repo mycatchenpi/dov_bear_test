@@ -86,6 +86,7 @@ jobs:
                       "emoji": true,
                       "text": "go"
                     },
+                    "value": "click_me_123",
                     "url": "${{ secrets.RAILWAY_DEPLOY_URL }}"
                   }
                 }
