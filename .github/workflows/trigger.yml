@@ -15,6 +15,7 @@ jobs:
   test_rigger:
     if: "!startswith(github.event.head_commit.message, '#NORUN')"
     runs-on: ubuntu-latest
+    
     steps:
       - name: setup go environment
         uses: actions/setup-go@v4
