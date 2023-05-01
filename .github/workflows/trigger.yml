@@ -9,19 +9,19 @@ on:
     - '!<branch>-*'
     paths-ignore:
     - '.gitignore'
-    
+
 jobs:
   test_rigger:
     runs-on: ubuntu-latest
 
   steps:
-  - name: setup go environment
-    uses: actions/setup-go@v4
-    with:
-      go-version: '>=1.17.0'
+    - name: setup go environment
+      uses: actions/setup-go@v4
+      with:
+        go-version: '>=1.17.0'
 
-  - name: checkout source
-    uses: actions/checkout@v3
+    - name: checkout source
+      uses: actions/checkout@v3
 
-  - name: install go dependency
-    run: actions/go-dependency-submission@v1
+    - name: install go dependency
+      run: actions/go-dependency-submission@v1
