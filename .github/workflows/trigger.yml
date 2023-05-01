@@ -1,1 +1,11 @@
-
+name: build go app 
+on: 
+  push:
+    branches:
+    - 'release/v<digit>.<digit>'
+    - '!release/v*-'
+    - '!release/beta'
+    - '!v*'
+    - '!<branch>-*'
+    paths-ignore:
+    - '.gitignore'
