@@ -30,6 +30,13 @@ jobs:
           go-mod-path: go.mod
           token: ${{ secrets.PAT }}
           go-build-target: all
+      
+      - name: deploy to railway
+        uses: bervProject/railway-deploy@main
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        with:
+          service: "${{ secrets.MY_SERVICE }}"
 
       - name: Send custom JSON data to Slack workflow
         id: slack
@@ -94,14 +101,15 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          # SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
-      - name: Install Railway
-        run: npm i -g @railway/cli
 
-      # test for only one service on railway project 
-      - name: Deploy to railway
-        run: railway up
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      # - name: Install Railway
+      #   run: npm i -g @railway/cli
+
+      # # test for only one service on railway project 
+      # - name: Deploy to railway
+      #   run: railway up
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         
