@@ -2,7 +2,7 @@ name: build go app
 on: 
   push:
     branches:
-    #test for branche name release/va.b
+    #test for branche name release/va.1
     - 'release/v[0-9]+\.[0-9]+'
     #- '!release/v[0-9].[0-9]*'
     - '!release/beta'
