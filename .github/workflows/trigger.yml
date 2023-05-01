@@ -31,8 +31,13 @@ jobs:
           token: ${{ secrets.PAT }}
           go-build-target: all
 
-      - name: generate slack notification
-        run: {
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+            {
               "blocks": [
                 {
                   "type": "header",
@@ -86,7 +91,8 @@ jobs:
                 }
               ]
             }
-        env: MY_SLACK_TEST_LINK: ${{ secrets.MY_SLACK_TEST_LINK }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Install Railway
         run: npm i -g @railway/cli
