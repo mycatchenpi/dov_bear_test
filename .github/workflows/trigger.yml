@@ -36,6 +36,7 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
 
+      # test for only one service on railway project 
       - name: Deploy to railway
         run: railway up
         env:
