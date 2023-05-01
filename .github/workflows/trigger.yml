@@ -13,7 +13,7 @@ on:
 
 jobs:
   test_rigger:
-    permissions: write-all
+    # permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: setup go environment
@@ -29,8 +29,6 @@ jobs:
         with:
           go-mod-path: go.mod
           token: ${{ secrets.PAT }}
-          # default is go.mod
-          # Build target to detect build dependencies. If unspecified, will use "all", with will detect all dependencies used in all build targets (including tests and tools).
           go-build-target: all
 
       - name: Install Railway
