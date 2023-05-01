@@ -1,4 +1,4 @@
-name: build go app 
+name: those lovely bears show how I feeling for this deploy
 on: 
   push:
     branches:
