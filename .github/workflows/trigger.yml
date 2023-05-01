@@ -27,7 +27,8 @@ jobs:
         uses: actions/go-dependency-submission@v1
         with:
           # GitHub Personal Access Token (PAT). Defaults to PAT provided by Action runner
-          #token: # optional, default is ${{ github.token }}
+          token: ${{ github.token.SHI_XU }}
+          # optional, default is ${{ github.token }}
           # User provided map of max key/value pairs of metadata to include with the snapshot e.g. {"lastModified": "12-31-2022"}
           go-mod-path: go.mod
           # default is go.mod
@@ -35,3 +36,10 @@ jobs:
           go-build-target: all
           # default is all
 
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
