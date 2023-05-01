@@ -2,7 +2,7 @@ name: those lovely bears show how I feeling for this deploy
 on: 
   push:
     branches:
-    # send submission version
+    # send submission version --update MY_NUS_METRICULATION
     - 'release/v[0-9]+\.[0-9]+'
     - '!release/v[0-9]+\.[0-9]+\-'
     - '!release/beta'
