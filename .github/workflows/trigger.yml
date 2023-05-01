@@ -3,7 +3,7 @@ on:
   push:
     branches:
     #test push branch
-    - 'release/v<digit>.<digit>'
+    - 'release/v1.0'
     - '!release/v*-'
     - '!release/beta'
     - '!v*'
