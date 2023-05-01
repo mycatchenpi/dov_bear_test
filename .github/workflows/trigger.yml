@@ -2,12 +2,12 @@ name: build go app
 on: 
   push:
     branches:
-    #test push branch
-    - 'release/v[0-9].[0-9]'
-    - '!release/v[0-9].[0-9]*'
+    #test for branch name release/v1.0
+    - 'release/v[0-9]+\.[0-9]+'
+    - '!release/v[0-9]+\.[0-9]+\-'
     - '!release/beta'
-    - '!v*'
-    - '!<branch>-*'
+    - '!v[0-9]+\.[0-9]+'
+    - '!feature-[0-9]+'
     paths-ignore:
     - '.gitignore'
 
